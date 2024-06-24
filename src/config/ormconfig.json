@@ -1,0 +1,20 @@
+{
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "your_username",
+    "password": "your_password",
+    "database": "medfinancemanager",
+    "synchronize": true,
+    "logging": false,
+    "entities": [
+        "src/entities/**/*.ts"
+    ],
+    "migrations": [
+        "src/migration/**/*.ts"
+    ],
+    "cli": {
+        "entitiesDir": "src/entities",
+        "migrationsDir": "src/migration"
+    }
+}
