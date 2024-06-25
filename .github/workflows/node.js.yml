@@ -21,13 +21,11 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Build and test
-      run: |
-        npm run build
-        npm test
+    - name: Test
+      run: npm test
 
     - name: Build Docker image
-      run: docker build -t username/myapp:${{ github.sha }} .
+      run: docker build -t pedropaino/medfinancemanager:${{ github.sha }} .
 
     - name: Log in to Docker Hub
       uses: docker/login-action@v1
@@ -36,7 +34,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Push Docker image to Docker Hub
-      run: docker push username/myapp:${{ github.sha }}
+      run: docker push pedropaino/medfinancemanager:${{ github.sha }}
 
     - name: Deploy to AWS (optional)
       uses: aws-actions/configure-aws-credentials@v1
@@ -47,4 +45,5 @@ jobs:
 
     - name: Execute deployment script
       run: ./deploy-script.sh
-    
+      if: success()
+
