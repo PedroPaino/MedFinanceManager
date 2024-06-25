@@ -1,5 +1,5 @@
 import { getRepository } from 'typeorm';
-import { User } from '../entities/User';
+import { User } from '../entities/User;
 import { UserController } from '../controllers/UserController';
 import { mockRequest, mockResponse } from './mocks';
 
