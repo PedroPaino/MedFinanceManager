@@ -1,23 +1,28 @@
 import express from 'express';
+import cors from 'cors';
 import { createConnection } from 'typeorm';
 import incomeRoutes from './routes/incomeRoutes';
 import expenseRoutes from './routes/expenseRoutes';
+import userRoutes from './routes/userRoutes';  // Garanta que você tenha esse arquivo e importe corretamente.
 
-const express = require('express');
-const { createConnection } = require('typeorm');
 const app = express();
 
-app.use(express.json()); // Middleware para parsear JSON
+// Configuração do CORS para aceitar requisições do frontend
+app.use(cors({
+  origin: 'http://localhost:3000'  // Substitua pela URL/porta do seu frontend se necessário
+}));
+
+// Middleware para parsear JSON
+app.use(express.json());
+
+// Configurações de rotas
 app.use('/users', userRoutes);
 app.use('/incomes', incomeRoutes);
 app.use('/expenses', expenseRoutes);
-app.use('/api/incomes', incomeRoutes);
 
+// Estabelecer conexão com o banco de dados
 createConnection().then(connection => {
-    // Seu banco de dados está conectado e configurado
     console.log('Database connected!');
-
-    // Configurações adicionais e rotas virão aqui
 
     const PORT = process.env.PORT || 3000;
     app.listen(PORT, () => {
@@ -27,4 +32,4 @@ createConnection().then(connection => {
     console.error('Database connection failed:', error);
 });
 
-module.exports = app;
+export default app;  // Usando exportação ES6 se você estiver usando módulos ES6 consistentemente
