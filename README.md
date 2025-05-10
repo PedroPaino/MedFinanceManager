@@ -75,5 +75,5 @@ Este projeto está licenciado sob a [MIT License](LICENSE).
 
 ## Contato
 
-Pedro Paino - [LinkedIn](https://www.linkedin.com/in/pedropaino) - pedrodpainoadm@gmail.com
+Pedro Paino - [LinkedIn](https://www.linkedin.com/in/pedropaino) - pedropainoadm@gmail.com
 
